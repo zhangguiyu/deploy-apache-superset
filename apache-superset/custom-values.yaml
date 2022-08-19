@@ -6,7 +6,7 @@ ingress:
   hosts:
     - <YOUR_HOST_NAME>
   tls:
-   - secretName: superset-tls
+   - secretName: <SECRET_NAME_OF_CERT_KEYS>
      hosts:
        - <YOUR_HOST_NAME>
 
@@ -20,6 +20,7 @@ supersetNode:
     db_pass: <PASSWORD>
     db_name: superset
   
+## Keep Postgreqsl.enabled: false to connect with existing postgresql instance.
 postgresql:
   enabled: false
 
