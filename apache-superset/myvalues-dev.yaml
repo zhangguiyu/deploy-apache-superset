@@ -1,0 +1,40 @@
+ingress:
+  enabled: false
+  ingressClassName: nginx
+  path: /
+  pathType: ImplementationSpecific
+  hosts:
+    - <YOUR_HOST_NAME>
+  tls:
+   - secretName: <SECRET_NAME_OF_CERT_KEYS>
+     hosts:
+       - <YOUR_HOST_NAME>
+
+
+## Superset node configuration
+supersetNode:
+  image:
+    repository: apache/superset
+    tag: lean
+    pullPolicy: IfNotPresent
+
+  connections:
+    #db_host: <POSTGRES_SERVICE_NAME>.NAMESPACE.svc.cluster.local
+    db_host: 10.100.38.81
+    db_port: "5433"
+    db_user: superset_root
+    db_pass: toor@superset
+    db_name: superset_dev
+  
+## Keep Postgreqsl.enabled: false to connect with existing postgresql instance.
+postgresql:
+  enabled: false
+
+
+init:
+  adminUser:
+    username: admin
+    firstname: Superset
+    lastname: Admin
+    email: julian.chang@moht.com.sg
+    password: admin
